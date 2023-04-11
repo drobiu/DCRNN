@@ -49,6 +49,7 @@ class DCRNNSupervisor(object):
                                                batch_size=self._data_kwargs['batch_size'],
                                                adj_mx=adj_mx, **self._model_kwargs)
 
+        # testing model returns the predicted labels
         with tf.name_scope('Test'):
             with tf.variable_scope('DCRNN', reuse=True):
                 self._test_model = DCRNNModel(is_training=False, scaler=scaler,
@@ -150,12 +151,14 @@ class DCRNNSupervisor(object):
                 'outputs': model.outputs
             })
 
+        # for each x, y data pair
         for _, (x, y) in enumerate(data_generator):
             feed_dict = {
                 model.inputs: x,
                 model.labels: y,
             }
 
+            # run the model on the data
             vals = sess.run(fetches, feed_dict=feed_dict)
 
             losses.append(vals['loss'])
@@ -255,6 +258,7 @@ class DCRNNSupervisor(object):
 
     def evaluate(self, sess, **kwargs):
         global_step = sess.run(tf.train.get_or_create_global_step())
+        # runs an epoch using the train model: outputs the predictions
         test_results = self.run_epoch_generator(sess, self._test_model,
                                                 self._data['test_loader'].get_iterator(),
                                                 return_output=True,
@@ -265,13 +269,16 @@ class DCRNNSupervisor(object):
         utils.add_simple_summary(self._writer, ['loss/test_loss'], [test_loss], global_step=global_step)
 
         y_preds = np.concatenate(y_preds, axis=0)
+        # scaler = StandardScaler(mean=data['x_train'][..., 0].mean(), std=data['x_train'][..., 0].std())
         scaler = self._data['scaler']
         predictions = []
         y_truths = []
+        # for each value of horizon 1 ... n compute the error metrics for the predicted data
         for horizon_i in range(self._data['y_test'].shape[1]):
             y_truth = scaler.inverse_transform(self._data['y_test'][:, horizon_i, :, 0])
             y_truths.append(y_truth)
 
+            # bring the predictions to original (non mean=0) space
             y_pred = scaler.inverse_transform(y_preds[:y_truth.shape[0], horizon_i, :, 0])
             predictions.append(y_pred)
 
