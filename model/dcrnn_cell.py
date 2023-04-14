@@ -58,7 +58,9 @@ class DCGRUCell(RNNCell):
 
     @staticmethod
     def _build_sparse_matrix(L):
+        # To coordinate representation
         L = L.tocoo()
+        # Adds coordinates as rows
         indices = np.column_stack((L.row, L.col))
         L = tf.SparseTensor(indices, L.data, L.shape)
         return tf.sparse_reorder(L)

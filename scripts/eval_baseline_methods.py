@@ -8,6 +8,7 @@ from lib import utils
 from lib.metrics import masked_rmse_np, masked_mape_np, masked_mae_np
 from lib.utils import StandardScaler
 
+horizon_timesteps = [1, 3, 6, 12, 18]
 
 def historical_average_predict(df, period=12 * 24 * 7, test_ratio=0.2, null_val=0.):
     """
@@ -88,7 +89,7 @@ def var_predict(df, n_forwards=(1, 3), n_lags=4, test_ratio=0.2):
 
 def eval_static(traffic_reading_df):
     logger.info('Static')
-    horizons = [1, 3, 6, 12]
+    horizons = horizon_timesteps
     logger.info('\t'.join(['Model', 'Horizon', 'RMSE', 'MAPE', 'MAE']))
     for horizon in horizons:
         y_predict, y_test = static_predict(traffic_reading_df, n_forward=horizon, test_ratio=0.2)
@@ -106,13 +107,13 @@ def eval_historical_average(traffic_reading_df, period):
     mae = masked_mae_np(preds=y_predict.as_matrix(), labels=y_test.as_matrix(), null_val=0)
     logger.info('Historical Average')
     logger.info('\t'.join(['Model', 'Horizon', 'RMSE', 'MAPE', 'MAE']))
-    for horizon in [1, 3, 6, 12]:
+    for horizon in horizon_timesteps:
         line = 'HA\t%d\t%.2f\t%.2f\t%.2f' % (horizon, rmse, mape * 100, mae)
         logger.info(line)
 
 
 def eval_var(traffic_reading_df, n_lags=3):
-    n_forwards = [1, 3, 6, 12]
+    n_forwards = horizon_timesteps
     y_predicts, y_test = var_predict(traffic_reading_df, n_forwards=n_forwards, n_lags=n_lags,
                                      test_ratio=0.2)
     logger.info('VAR (lag=%d)' % n_lags)

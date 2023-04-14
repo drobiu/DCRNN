@@ -61,7 +61,7 @@ def generate_train_val_test(args):
         np.concatenate((np.arange(-11, 1, 1),))
     )
     # Predict the next one hour
-    y_offsets = np.sort(np.arange(1, 13, 1))
+    y_offsets = np.sort(np.arange(1, 19, 1))
     # x: (num_samples, input_length, num_nodes, input_dim)
     # y: (num_samples, output_length, num_nodes, output_dim)
     x, y = generate_graph_seq2seq_io_data(
