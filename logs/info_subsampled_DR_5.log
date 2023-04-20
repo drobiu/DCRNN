@@ -1,0 +1,51 @@
+2023-04-15 12:10:03,478 - model.dcrnn_supervisor - INFO - Log directory: data/model/dcrnn_DR_5_h_18_64-64_lr_0.01_bs_64_0415121003/
+2023-04-15 12:10:03,480 - model.dcrnn_supervisor - INFO - {'base_dir': 'data/model', 'log_level': 'INFO', 'data': {'batch_size': 64, 'dataset_dir': 'data/METR-LA', 'test_batch_size': 64, 'val_batch_size': 64, 'graph_pkl_filename': 'data/sensor_graph/adj_mx.pkl'}, 'model': {'cl_decay_steps': 2000, 'filter_type': 'dual_random_walk', 'horizon': 18, 'input_dim': 2, 'l1_decay': 0, 'max_diffusion_step': 5, 'num_nodes': 50, 'num_rnn_layers': 2, 'output_dim': 1, 'rnn_units': 64, 'seq_len': 18, 'use_curriculum_learning': True}, 'train': {'base_lr': 0.01, 'dropout': 0, 'epoch': 0, 'epochs': 100, 'epsilon': 0.001, 'global_step': 0, 'lr_decay_ratio': 0.1, 'max_grad_norm': 5, 'max_to_keep': 100, 'min_learning_rate': 2e-06, 'optimizer': 'adam', 'patience': 10, 'steps': [20, 30, 40, 50], 'test_every_n_epochs': 10}}
+2023-04-15 12:10:06,234 - model.dcrnn_supervisor - INFO - ('x_train', (23966, 18, 50, 2))
+2023-04-15 12:10:06,234 - model.dcrnn_supervisor - INFO - ('y_train', (23966, 18, 50, 2))
+2023-04-15 12:10:06,234 - model.dcrnn_supervisor - INFO - ('x_val', (3424, 18, 50, 2))
+2023-04-15 12:10:06,234 - model.dcrnn_supervisor - INFO - ('y_val', (3424, 18, 50, 2))
+2023-04-15 12:10:06,234 - model.dcrnn_supervisor - INFO - ('x_test', (6847, 18, 50, 2))
+2023-04-15 12:10:06,234 - model.dcrnn_supervisor - INFO - ('y_test', (6847, 18, 50, 2))
+2023-04-15 12:10:47,149 - model.dcrnn_supervisor - INFO - Total number of trainable parameters: 818176
+2023-04-15 12:10:50,952 - model.dcrnn_supervisor - INFO - Start training ...
+2023-04-15 12:14:23,393 - model.dcrnn_supervisor - INFO - Epoch [0/100] (375) train_mae: 4.3377, val_mae: 6.1264 lr:0.010000 211.1s
+2023-04-15 12:14:24,867 - model.dcrnn_supervisor - INFO - Val loss decrease from inf to 6.1264, saving to data/model/dcrnn_DR_5_h_18_64-64_lr_0.01_bs_64_0415121003/models-6.1264-375
+2023-04-15 12:17:53,301 - model.dcrnn_supervisor - INFO - Epoch [1/100] (750) train_mae: 2.5711, val_mae: 5.1039 lr:0.010000 208.4s
+2023-04-15 12:17:53,318 - model.dcrnn_supervisor - INFO - Val loss decrease from 6.1264 to 5.1039, saving to data/model/dcrnn_DR_5_h_18_64-64_lr_0.01_bs_64_0415121003/models-5.1039-750
+2023-04-15 12:21:22,119 - model.dcrnn_supervisor - INFO - Epoch [2/100] (1125) train_mae: 2.4590, val_mae: 5.2621 lr:0.010000 208.8s
+2023-04-15 12:24:49,325 - model.dcrnn_supervisor - INFO - Epoch [3/100] (1500) train_mae: 2.4051, val_mae: 5.0328 lr:0.010000 207.2s
+2023-04-15 12:24:49,342 - model.dcrnn_supervisor - INFO - Val loss decrease from 5.1039 to 5.0328, saving to data/model/dcrnn_DR_5_h_18_64-64_lr_0.01_bs_64_0415121003/models-5.0328-1500
+2023-04-15 12:28:17,398 - model.dcrnn_supervisor - INFO - Epoch [4/100] (1875) train_mae: 2.3616, val_mae: 4.6618 lr:0.010000 208.1s
+2023-04-15 12:28:17,414 - model.dcrnn_supervisor - INFO - Val loss decrease from 5.0328 to 4.6618, saving to data/model/dcrnn_DR_5_h_18_64-64_lr_0.01_bs_64_0415121003/models-4.6618-1875
+2023-04-15 12:31:43,848 - model.dcrnn_supervisor - INFO - Epoch [5/100] (2250) train_mae: 2.3325, val_mae: 4.6517 lr:0.010000 206.4s
+2023-04-15 12:31:43,865 - model.dcrnn_supervisor - INFO - Val loss decrease from 4.6618 to 4.6517, saving to data/model/dcrnn_DR_5_h_18_64-64_lr_0.01_bs_64_0415121003/models-4.6517-2250
+2023-04-15 12:35:10,610 - model.dcrnn_supervisor - INFO - Epoch [6/100] (2625) train_mae: 2.3831, val_mae: 4.6757 lr:0.010000 206.7s
+2023-04-15 12:38:36,293 - model.dcrnn_supervisor - INFO - Epoch [7/100] (3000) train_mae: 10.4923, val_mae: 34.2011 lr:0.010000 205.7s
+2023-04-15 12:42:02,162 - model.dcrnn_supervisor - INFO - Epoch [8/100] (3375) train_mae: 12.4460, val_mae: 41.9813 lr:0.010000 205.9s
+2023-04-15 12:45:29,470 - model.dcrnn_supervisor - INFO - Epoch [9/100] (3750) train_mae: 13.4748, val_mae: 42.8129 lr:0.010000 207.3s
+2023-04-15 12:45:59,147 - model.dcrnn_supervisor - INFO - Horizon 01, MAE: 23.09, MAPE: 0.3919, RMSE: 28.13
+2023-04-15 12:45:59,159 - model.dcrnn_supervisor - INFO - Horizon 02, MAE: 32.24, MAPE: 0.5372, RMSE: 38.77
+2023-04-15 12:45:59,170 - model.dcrnn_supervisor - INFO - Horizon 03, MAE: 37.92, MAPE: 0.6295, RMSE: 44.69
+2023-04-15 12:45:59,181 - model.dcrnn_supervisor - INFO - Horizon 04, MAE: 41.20, MAPE: 0.6830, RMSE: 47.81
+2023-04-15 12:45:59,192 - model.dcrnn_supervisor - INFO - Horizon 05, MAE: 43.20, MAPE: 0.7157, RMSE: 49.60
+2023-04-15 12:45:59,203 - model.dcrnn_supervisor - INFO - Horizon 06, MAE: 44.53, MAPE: 0.7381, RMSE: 50.75
+2023-04-15 12:45:59,214 - model.dcrnn_supervisor - INFO - Horizon 07, MAE: 45.45, MAPE: 0.7530, RMSE: 51.54
+2023-04-15 12:45:59,225 - model.dcrnn_supervisor - INFO - Horizon 08, MAE: 46.12, MAPE: 0.7642, RMSE: 52.11
+2023-04-15 12:45:59,235 - model.dcrnn_supervisor - INFO - Horizon 09, MAE: 46.64, MAPE: 0.7727, RMSE: 52.55
+2023-04-15 12:45:59,246 - model.dcrnn_supervisor - INFO - Horizon 10, MAE: 47.04, MAPE: 0.7796, RMSE: 52.89
+2023-04-15 12:45:59,256 - model.dcrnn_supervisor - INFO - Horizon 11, MAE: 47.39, MAPE: 0.7852, RMSE: 53.17
+2023-04-15 12:45:59,267 - model.dcrnn_supervisor - INFO - Horizon 12, MAE: 47.67, MAPE: 0.7898, RMSE: 53.41
+2023-04-15 12:45:59,278 - model.dcrnn_supervisor - INFO - Horizon 13, MAE: 47.93, MAPE: 0.7939, RMSE: 53.61
+2023-04-15 12:45:59,288 - model.dcrnn_supervisor - INFO - Horizon 14, MAE: 48.11, MAPE: 0.7975, RMSE: 53.77
+2023-04-15 12:45:59,299 - model.dcrnn_supervisor - INFO - Horizon 15, MAE: 48.30, MAPE: 0.8006, RMSE: 53.93
+2023-04-15 12:45:59,310 - model.dcrnn_supervisor - INFO - Horizon 16, MAE: 48.45, MAPE: 0.8030, RMSE: 54.05
+2023-04-15 12:45:59,323 - model.dcrnn_supervisor - INFO - Horizon 17, MAE: 48.59, MAPE: 0.8052, RMSE: 54.16
+2023-04-15 12:45:59,336 - model.dcrnn_supervisor - INFO - Horizon 18, MAE: 48.72, MAPE: 0.8077, RMSE: 54.27
+2023-04-15 12:49:26,552 - model.dcrnn_supervisor - INFO - Epoch [10/100] (4125) train_mae: 13.6771, val_mae: 42.1611 lr:0.010000 207.2s
+2023-04-15 12:52:53,112 - model.dcrnn_supervisor - INFO - Epoch [11/100] (4500) train_mae: 13.4169, val_mae: 41.2276 lr:0.010000 206.6s
+2023-04-15 12:56:20,392 - model.dcrnn_supervisor - INFO - Epoch [12/100] (4875) train_mae: 12.9042, val_mae: 39.9792 lr:0.010000 207.3s
+2023-04-15 12:59:46,176 - model.dcrnn_supervisor - INFO - Epoch [13/100] (5250) train_mae: 12.1770, val_mae: 39.1891 lr:0.010000 205.8s
+2023-04-15 13:03:14,174 - model.dcrnn_supervisor - INFO - Epoch [14/100] (5625) train_mae: 12.6027, val_mae: 41.1115 lr:0.010000 208.0s
+2023-04-15 13:06:40,624 - model.dcrnn_supervisor - INFO - Epoch [15/100] (6000) train_mae: 13.4862, val_mae: 43.6437 lr:0.010000 206.4s
+2023-04-15 13:10:06,662 - model.dcrnn_supervisor - INFO - Epoch [16/100] (6375) train_mae: 12.7620, val_mae: 42.8491 lr:0.010000 206.0s
+2023-04-15 13:10:06,662 - model.dcrnn_supervisor - WARNING - Early stopping at epoch: 16
