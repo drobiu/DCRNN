@@ -8,7 +8,7 @@ from lib import utils
 from lib.metrics import masked_rmse_np, masked_mape_np, masked_mae_np
 from lib.utils import StandardScaler
 
-horizon_timesteps = [1, 3, 6, 12, 18]
+horizon_timesteps = [1, 3, 6, 12]
 
 def historical_average_predict(df, period=12 * 24 * 7, test_ratio=0.2, null_val=0.):
     """
